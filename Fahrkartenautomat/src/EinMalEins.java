@@ -9,7 +9,7 @@ public class EinMalEins {
 				System.out.printf("%4s", i*j);
 			}
 			System.out.println();
-		}
+		} //Test für GitHub
 	}
 
 }
