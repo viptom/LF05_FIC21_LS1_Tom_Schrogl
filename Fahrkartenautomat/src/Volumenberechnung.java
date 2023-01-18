@@ -1,5 +1,5 @@
-
-public class Volumen {
+	
+public class Volumenberechnung {
 
 	public static void main(String[] args) {
 		System.out.println(volumenBerechnung(volumenBerechnung(3)));
