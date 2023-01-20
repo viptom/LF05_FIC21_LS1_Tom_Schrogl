@@ -32,20 +32,33 @@ class Fahrkartenautomat {
 	}
 	
 	public static void begruessung() {
-		//4.3
-        System.out.println("Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:\r\n"
-        		+ "  Kurzstrecke AB [2,00 EUR] (1)\r\n"
-        		+ "  Einzelfahrschein AB [3,00 EUR] (2)\r\n"
-        		+ "  Tageskarte AB [8,80 EUR] (3)\r\n"
-        		+ "  4-Fahrten-Karte AB [9,40 EUR] (4)"
-        		+ "  Bezahlen (9)");
+		String[] fahrkarten = { //7.4
+				"Einzelfahrschein AB [3,00 EUR] (1)",
+				"Einzelfahrschein BC [3,50 EUR] (2)",
+				"Einzelfahrschein ABC [3,80 EUR] (3)",
+				"Einzelfahrschein AB [2,00 EUR] (4)",
+				"Einzelfahrschein AB [8,60 EUR] (5)",
+				"Einzelfahrschein AB [9,20 EUR] (6)",
+				"Einzelfahrschein AB [10,00 EUR] (7)",
+				"Einzelfahrschein AB [9,40 EUR] (8)",
+				"Einzelfahrschein AB [12,60 EUR] (9)",
+				"Einzelfahrschein AB [13,80 EUR] (10)",
+				"Einzelfahrschein AB [25,50 EUR] (11)",
+				"Einzelfahrschein AB [26,00 EUR] (12)",
+				"Einzelfahrschein AB [26,50 EUR] (13)",
+				"Bezahlen (14)"
+		};
+		System.out.println("Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:");
+		for (int i = 0; i<fahrkarten.length; i++) {
+			System.out.println(fahrkarten[i]);
+		}
 	}
 	
 	//Kartenauswahl und Ticketanzahl
 	public static double fahrkartenbestellungErfassen(Scanner tastatur) {
 		boolean isBezahlt = true;
 		int ticketTyp;
-		double ticketPreis = 0;
+		double[] ticketPreis = {3.00, 3.50, 3.80, 2.00, 8.60, 9.20, 10.00, 9.40, 12.60, 13.80, 25.50, 26.00, 26.50}; //7.4
 		double anzahlTickets = 0;
 		double zwischenSumme = 0;
 		double zuZahlenderBetrag;
@@ -57,22 +70,20 @@ class Fahrkartenautomat {
         
         	switch (ticketTyp) {
         	case 1:
-        		ticketPreis = 2;
-        		break;
-			
         	case 2:
-        		ticketPreis = 3;
-        		break;
-
         	case 3:
-        		ticketPreis = 8;
-        		break;
-	
         	case 4:
-        		ticketPreis = 9.4;
-        		break;
-        		
+        	case 5:
+        	case 6:
+        	case 7:
+        	case 8:
         	case 9:
+        	case 10:
+        	case 11:
+        	case 12:
+        	case 13:
+        		break;
+        	case 14:
         		isBezahlt = false;
         		break;
 
@@ -86,12 +97,12 @@ class Fahrkartenautomat {
             anzahlTickets = tastatur.nextDouble();
             
             while (anzahlTickets < 1 || anzahlTickets > 10) { //4.2
-                System.out.println(" >> Wählen Sie bitte eine Anzahl von 1 bis 10 Tickets aus << \n");
+                System.out.println(" >> Wählen Sie bitte eine Anzahl von 1 bis 13 Tickets aus << \n");
                 anzahlTickets = tastatur.nextDouble();
             }
             
-            zwischenSumme = zwischenSumme + ticketPreis * anzahlTickets;
-            System.out.println("\nZwischensumme: " + zwischenSumme + " €\n");
+            zwischenSumme = zwischenSumme + ticketPreis[ticketTyp-1] * anzahlTickets;
+            System.out.printf("\nZwischensumme: %.2f€\n",zwischenSumme);
         	}
         
         }
