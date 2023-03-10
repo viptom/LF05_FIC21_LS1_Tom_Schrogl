@@ -24,7 +24,7 @@ public class Artikel {
 	
 	public double gewinnBerechen()
 	{
-		return this.verkaufspreisInEuro - this.einkaufspreisInEuro;
+		return (this.verkaufspreisInEuro - this.einkaufspreisInEuro)*this.istBestand;
 	}
 	
 	public String getBezeichnung() {
